@@ -13,9 +13,8 @@ define([
   'mps',
   'views/MapView',
   'views/FilterNavView',
-  'views/LayersNavView',
-  'views/LegendView'
-], function($, _, Backbone, gmap, mps, MapView, FilterNavView, LayersNavView, LegendView) {
+  'views/LayersNavView'
+], function($, _, Backbone, gmap, mps, MapView, FilterNavView, LayersNavView) {
 
   'use strict';
 
@@ -31,11 +30,10 @@ define([
           this.mapView = new MapView();
           this.filterNavView = new FilterNavView();
           this.layersNavView = new LayersNavView();
-          this.legendView = new LegendView();
         }
-        // Initialize forestChange layer
-        mps.publish('map/toggle-layer', ['forestChange']);
-        mps.publish('filter/change', [{2000: true}]);
+        // Initialize sf layer
+        mps.publish('map/toggle-layer', ['sf']);
+        mps.publish('filter/change', [{'5m': true}]);
       }, this));
     }
   });

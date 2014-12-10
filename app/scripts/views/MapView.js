@@ -2,9 +2,8 @@ define([
   'backbone',
   'underscore',
   'mps',
-  'layers/ForestChangeLayer',
-  'layers/ForestTypeLayer'
-], function(Backbone, _, mps, ForestChangeLayer, ForestTypeLayer) {
+  'layers/SFLayer',
+], function(Backbone, _, mps, SFLayer) {
 
   'use strict';
 
@@ -14,19 +13,17 @@ define([
 
     initialize: function() {
       _.bindAll(this, '_toggleLayer', '_addLayer');
-
-      this.forestChangeLayer = new ForestChangeLayer();
-      this.forestTypeLayer = new ForestTypeLayer();
+      this.sfLayer = new SFLayer();
 
       this.render();
     },
 
     render: function() {
       var options = {
-        minZoom: 5,
-        zoom: 5,
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
-        center: new google.maps.LatLng(-2.6357885741665936, 121.025390625)
+        minZoom: 3,
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        center: new google.maps.LatLng(37.7441, -122.4289)
       };
 
       this.map = new google.maps.Map(this.el, options);
@@ -38,33 +35,19 @@ define([
       mps.subscribe('map/toggle-layer', this._toggleLayer);
 
       mps.subscribe('filter/change', _.bind(function(params) {
-        this.forestChangeLayer.setParams(params);
-        this.forestTypeLayer.setParams(params);
-
-        if (this._isLayerRendered('forestChange')) {
-          this.forestChangeLayer.updateTiles();
-        }
-
-        if (this._isLayerRendered('forestType')) {
-          this.forestTypeLayer.updateTiles();
+        this.sfLayer.setParams(params);
+        if (this._isLayerRendered('sf')) {
+          this.sfLayer.updateTiles();
         }
       }, this));
     },
 
     _toggleLayer: function(layerName) {
-      if (layerName === 'forestChange') {
+      if (layerName === 'sf') {
         if (this._isLayerRendered(layerName)) {
           this._removeLayer(layerName);
         } else {
-          this._addLayer(this.forestChangeLayer);
-        }
-      }
-
-      if (layerName === 'forestType') {
-        if (this._isLayerRendered(layerName)) {
-          this._removeLayer(layerName);
-        } else {
-          this._addLayer(this.forestTypeLayer);
+          this._addLayer(this.sfLayer);
         }
       }
     },
