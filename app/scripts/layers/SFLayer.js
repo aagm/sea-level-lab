@@ -51,7 +51,7 @@ define([
 			          //var intensity = imgdata[pixel_pos + 1];
 			          //yearLoss = 2005;
 
-			          if (seaLevel >= 0 && seaLevel < level+1) {
+			          if (seaLevel >= -1 && seaLevel < level+1) {
 			             var c = 3;
 			            imgdata[pixel_pos] = 43;
 			            imgdata[pixel_pos + 1] = 75;
