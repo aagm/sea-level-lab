@@ -27,9 +27,77 @@ define([
     map: function() {
       gmap.init(_.bind(function() {
         if (!this.mapView) {
-          this.mapView = new MapView();
+
+          new MapView({
+            el: '#san-francisco .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(37.7441, -122.4289)
+            }
+
+          });
+
+          new MapView({
+            el: '#barcelona .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 5,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(2.1487679, 41.39479)
+            }
+          });
+
+          new MapView({
+            el: '#miammi .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(37.7441, -122.4289)
+            }
+          });
+
+          new MapView({
+            el: '#barcelona .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(37.7441, -122.4289)
+            }
+          });
+
+          new MapView({
+            el: '#san-sebastian .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(37.7441, -122.4289)
+            }
+          });
+
+          new MapView({
+            el: '#aarhon .flooding-view',
+
+            options: {
+              minZoom: 3,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              center: new google.maps.LatLng(37.7441, -122.4289)
+            }
+          });
+
           this.filterNavView = new FilterNavView();
           this.layersNavView = new LayersNavView();
+          this.mapView = true;
         }
         // Initialize sf layer
         mps.publish('map/toggle-layer', ['sf']);

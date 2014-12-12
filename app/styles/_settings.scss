@@ -1,7 +1,12 @@
 // Typography
-$site-font-family: "Open Sans", Helvetica, Arial, sans-serif;
-$site-font-size: 13px;
+$site-font-family: "AkzidenzGroteskBQ", Helvetica, Arial, sans-serif;
+$site-font-size: 18px;
 $site-line-height: 1.2;
+
+$large-margin: 80px;
+$medium-margin: 40px;
+$small-margin: 10px;
+
 
 // Colors
 $graydark: #333;
@@ -12,3 +17,8 @@ $gray: #aaa;
 $default-color: #1a1a1a;
 $primary-color: blue;
 $secondary-color: organge;
+
+$color-0: #fff;
+$color-01: #88bbe3;
+
+$text-color-01: #666;

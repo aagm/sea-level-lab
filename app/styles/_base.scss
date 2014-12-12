@@ -4,10 +4,54 @@ html, body {
 }
 
 body {
+  max-width: 960px;
+  margin: 150px $large-margin;
   font-family: $site-font-family;
   font-size: $site-font-size;
   color: $default-color;
   line-height: $site-line-height;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  position: relative;
+  font-size: 72px;
+  font-weight: bold;
+  color: $color-01;
+  margin-bottom: $medium-margin;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background-color: rgba($color-0, .7);
+  }
+}
+
+h2 {
+  position: relative;
+  font-size: 36px;
+  font-weight: bold;
+  color:  $color-01;
+  margin-bottom: $medium-margin;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background-color: rgba($color-0, .5);
+  }
+}
+
+p {
+  margin-bottom: $medium-margin;
+  font-size: $site-font-size;
+  color: $text-color-01;
 }

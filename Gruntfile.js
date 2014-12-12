@@ -235,7 +235,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'clean:server',
-    'test',
+    // 'test',
     'compass:app'
   ]);
 

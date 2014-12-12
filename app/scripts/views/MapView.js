@@ -9,24 +9,29 @@ define([
 
   var MapView = Backbone.View.extend({
 
-    el: '.map',
+    //el: '.map',
 
-    initialize: function() {
+    initialize: function(settings) {
       _.bindAll(this, '_toggleLayer', '_addLayer');
       this.sfLayer = new SFLayer();
+
+      this.options = settings.options;
+
+      //console.log(this.options.center);
 
       this.render();
     },
 
     render: function() {
-      var options = {
-        minZoom: 3,
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
-        center: new google.maps.LatLng(37.7441, -122.4289)
-      };
 
-      this.map = new google.maps.Map(this.el, options);
+      // var options = {
+      //   minZoom: 3,
+      //   zoom: 12,
+      //   mapTypeId: google.maps.MapTypeId.SATELLITE,
+      //   center: new google.maps.LatLng(37.7441, -122.4289)
+      // };
+
+      this.map = new google.maps.Map(this.el, this.options);
       this._resize();
       this._subscribe();
     },
